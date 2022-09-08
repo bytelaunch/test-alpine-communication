@@ -17,6 +17,7 @@ class ActivityComponent extends Component
     public function handleCreateBid()
     {
         sleep(2);
-        $this->activities[] = 'James placed a bid';
+        $this->activities[] = 'James placed a bid (from Server)';
+        ray($this->activities);
     }
 }
