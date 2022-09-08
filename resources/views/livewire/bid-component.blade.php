@@ -3,5 +3,5 @@
     <h2 class="text-2x underline mb-2">Bid Component</h2>
     <button
         wire:click="createBid"
-            @click="$dispatch('create-bid', 'Hello World!')" class="bg-gray-50 p-2 rounded">Create a bid</button>
+            @click="$dispatch('create-bid')" class="bg-gray-50 p-2 rounded">Create a bid</button>
 </div>

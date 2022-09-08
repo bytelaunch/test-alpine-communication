@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use Illuminate\Support\Str;
 use Livewire\Component;
 
 class ParentComponent extends Component
@@ -11,7 +12,7 @@ class ParentComponent extends Component
     public function mount()
     {
         // create a random activity
-        $this->activities = [
+        $activityStrings = [
             'James placed a bid',
             'Tom placed a bid',
             'Sam placed a bid',
@@ -19,6 +20,19 @@ class ParentComponent extends Component
             'Tom placed a bid',
             'James placed a bid of $50,000',
         ];
+
+        $activities = collect($activityStrings)->map(function ($activityString) {
+            $receivedAt = now()->subSeconds(rand(1, 60 * 10));
+            return [
+                'key' => Str::random(4),
+                'activityString' => $activityString,
+                'receivedAt' => $receivedAt,
+                'receivedAtHuman' => $receivedAt->format('D H:i:s'),
+            ];
+        });
+        $activities = $activities->sortBy('receivedAt')->values()->toArray();
+
+        $this->activities = $activities;
     }
 
     protected $listeners = ['createBid' => 'handleCreateBid'];
@@ -30,7 +44,6 @@ class ParentComponent extends Component
 
     public function handleCreateBid()
     {
-        ray('woop');
         $this->activities[] = 'James placed a bid';
     }
 }

@@ -7,7 +7,13 @@
 
     <ul>
         <template x-for="activity in activities">
-            <li x-text="activity"></li>
+            <li>
+                <span class="text-gray-500" x-text="activity.receivedAtHuman"></span>
+                -
+                <span
+                    x-text="activity.activityString"></span>
+
+            </li>
         </template>
     </ul>
 </div>
@@ -26,8 +32,9 @@
 
                 handleButtonClick() {
                     console.log('handleButtonClick');
-                    this.activities.push('James placed a bid (from Alpine)');
-
+                    let activityStr = 'James placed a bid (from Alpine)';
+                    this.activities.push({ activityString: activityStr, receivedAtHuman: 'now' });
+                    this.$wire.createActivity(activityStr);
                 },
 
             };
