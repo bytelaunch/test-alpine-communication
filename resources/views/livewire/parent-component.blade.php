@@ -3,7 +3,7 @@
 
     <div class="flex">
         <div class="w-1/2">
-            <livewire:activity-component/>
+            <livewire:activity-component :activities="$activities"/>
         </div>
 
         <div class="w-1/2">

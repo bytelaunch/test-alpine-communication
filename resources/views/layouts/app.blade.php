@@ -6,9 +6,19 @@
 
     <title>Laravel</title>
 
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
     @vite('resources/css/app.css')
+
+
+    @livewireStyles
 </head>
 <body class="p-2">
     {{ $slot }}
+
+    @stack('modals')
+    @stack('scripts')
+
+    @livewireScripts
 </body>
 </html>

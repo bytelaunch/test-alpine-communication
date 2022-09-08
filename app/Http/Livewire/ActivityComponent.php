@@ -6,6 +6,8 @@ use Livewire\Component;
 
 class ActivityComponent extends Component
 {
+    public $activities;
+
     public function render()
     {
         return view('livewire.activity-component');
