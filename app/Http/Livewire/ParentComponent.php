@@ -21,8 +21,16 @@ class ParentComponent extends Component
         ];
     }
 
+    protected $listeners = ['createBid' => 'handleCreateBid'];
+
     public function render()
     {
         return view('livewire.parent-component');
+    }
+
+    public function handleCreateBid()
+    {
+        ray('woop');
+        $this->activities[] = 'James placed a bid';
     }
 }

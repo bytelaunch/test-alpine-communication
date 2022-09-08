@@ -10,4 +10,8 @@ class BidComponent extends Component
     {
         return view('livewire.bid-component');
     }
+
+    public function createBid() {
+        $this->emit('createBid');
+    }
 }
