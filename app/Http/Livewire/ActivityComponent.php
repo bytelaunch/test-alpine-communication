@@ -57,6 +57,8 @@ class ActivityComponent extends Component
             'receivedAtHuman' => $receivedAt->format('D H:i:s'),
         ];
 
+        $activities = collect($activities)->sortBy('receivedAt')->values()->toArray();
+
         $this->activities = $this->removeClientSideActivities($activities);
     }
 }
